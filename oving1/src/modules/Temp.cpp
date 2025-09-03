@@ -42,23 +42,18 @@ void Temp::determinNumberCatogery(double number) {
 
 void Temp::readTemperaturesFromFile(double temperatures[], int length) {
 
-    ifstream file("resources/TempFile.txt");  // Try relative path first
+    ifstream file("resources/TempFile.txt");  
             
     if (!file.is_open()) {
-        // Try alternative paths if the first one fails
-        file.open("../../resources/TempFile.txt");
-        if (!file.is_open()) {
-            file.open("oving1/resources/TempFile.txt");
-            if (!file.is_open()) {      
-                cerr << "Error: Could not open file 'TempFile.txt'" << "\n";
-                cerr << "Tried paths: resource/TempFile.txt, ../../resource/TempFile.txt, oving1/resource/TempFile.txt" << "\n";
-                cerr << "Make sure the file exists and the working directory is correct" << "\n";
-                return;
-            }
-        }
+        cerr << "Error: Could not open file 'TempFile.txt'" << "\n";
+        cerr << "Tried paths: resource/TempFile.txt, ../../resource/TempFile.txt, oving1/resource/TempFile.txt" << "\n";
+        cerr << "Make sure the file exists and the working directory is correct" << "\n";
+        return;
     }
 
-    cout << "File opened successfully!" << "\n";
+    if (file.is_open()) {
+        cout << "File opened successfully!" << "\n";
+    }
 
     for (int i = 0; i < length; i++) {
         if (file >> temperatures[i]) {
@@ -70,7 +65,6 @@ void Temp::readTemperaturesFromFile(double temperatures[], int length) {
             if (file.eof()) {
                 cerr << "Reached end of file (only " << i << " temperatures read)" << "\n";
             }
-            break;
         }
     }
 
