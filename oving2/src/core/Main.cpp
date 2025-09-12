@@ -44,14 +44,14 @@ int main() {
 	//q5.doQuest();
 
 	cout << "========== Quest 6 ==========" << "\n";
-	//int numbers[20] = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 };
-	//Quest6 q6_1, q6_2, q6_3;
-	//q6_1.findSum(numbers, 10);
-	//cout << q6_1.getSum() << "\n";
-	//q6_2.findSum(numbers + 9, 5);
-	//cout << q6_2.getSum() << "\n";
-	//q6_3.findSum(numbers+15, 5);
-	//cout << q6_3.getSum() << "\n";
+	int numbers[20] = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 };
+	Quest6 q6_1, q6_2, q6_3;
+	q6_1.findSum(numbers, 10);
+	cout << q6_1.getSum() << "\n";
+	q6_2.findSum(numbers + 9, 5);
+	cout << q6_2.getSum() << "\n";
+	q6_3.findSum(numbers+15, 5);
+	cout << q6_3.getSum() << "\n";
 
 
 
