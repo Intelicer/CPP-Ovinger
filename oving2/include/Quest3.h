@@ -4,16 +4,24 @@
 using namespace std;
 
 
-/*
-The problem is that this loop only stops when it finds an 'e'.
-If the input string contains no 'e', the pointer will keep
-incrementing past the end of the array. Once it moves beyond
-(sizeof(text) - 1), it goes out of bounds, causing undefined
-behavior possible infinite loop that leeds to a crash.
 
-Also since *pointer = search_for overwrites characters with 'e',
-this code modifies the input instead of just searching.
-*/
+/**
+ * @brief Demonstrates array bounds checking and safe character searching
+ *
+ * This class illustrates common pitfalls in array manipulation and pointer arithmetic.
+ *
+ * @warning Original problematic approach:
+ * The original implementation had several critical issues:
+ * 1. Infinite loop potential when search character ('e') is not found
+ * 2. Buffer overflow - pointer moves beyond array bounds
+ * 3. Data corruption - overwrites characters instead of just searching
+ *
+ * @details Problem Analysis:
+ * - Loop condition: while (*pointer != search_for)
+ * - If 'e' is not in input, pointer increments past text[4]
+ * - Results in undefined behavior and potential crash
+ * - Assignment *pointer = search_for modifies input data
+ */
 class Quest3 {
 private:
 
@@ -23,5 +31,22 @@ private:
 
 
 public:
+	/**
+	 * @brief Demonstrates unsafe character searching with bounds issues
+	 *
+	 * This method reads user input and attempts to find/replace characters.
+	 *
+	 * @warning Current implementation has critical flaws:
+	 * - No bounds checking leads to potential buffer overflow
+	 * - Infinite loop if search character not found
+	 * - Modifies input data instead of read-only search
+	 *
+	 * @note For safe implementation, add bounds checking:
+	 * @code
+	 * while (pointer < text + 4 && *pointer != search_for) {
+	 *     pointer++;  // Move without modifying
+	 * }
+	 * @endcode
+	 */
 	void doQuest();
 };
