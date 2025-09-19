@@ -14,8 +14,8 @@ endif()
 project ("ovinger")
 
 # Include sub-projects.
-add_subdirectory ("oving1")
-add_subdirectory ("oving2")
+#add_subdirectory ("oving1")
+#add_subdirectory ("oving2")
 add_subdirectory ("oving3")
 
 
